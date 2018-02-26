@@ -3,15 +3,16 @@
     <title>Make Short</title>
 </head>
 <body>
-    <form action="/short/" method="get">
+    <form action="/short/" method="post">
         <input type="text" name="long_link" value="{{ long_link }}">
+        {% csrf_token %}
         <input type="submit" value="Short">
     </form>
 	{% if error %}
 		<p style="color: red;">Please provide the link you want to short</p>
 	{% endif %}
 	{% if short_link %}
-		<p>Shortened link is: {{ short_link }}</p>
+		<p>Shortened link is: <a href="{{ short_link }}">{{ short_link }}</a></p>
 	{% endif %}
 </body>
 </html>
