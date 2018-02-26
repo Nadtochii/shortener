@@ -15,9 +15,9 @@ def short(request):
             long_link = cd['long_link']
             short = uuid.uuid4().hex
             link = Shortener.objects.create(long_link=long_link, short_link=short)
-            link_id = Shortener.objects.get(long_link=long_link)
+            link_id = Shortener.objects.get(id=link.id)
             short_link = 'http://127.0.0.1:8000/' + short
-            return render(request, 'shortener/short_form.html', {'long_link': long_link, 'short_link': short_link})
+            return render(request, 'shortener/short_form.html', {'long_link': link.long_link, 'short_link': short_link})
         else:
             error = True
     return render(request, 'shortener/short_form.html', {'error': error})
