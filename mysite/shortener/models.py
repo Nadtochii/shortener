@@ -7,4 +7,4 @@ class Shortener(models.Model):
     short_link = models.CharField(max_length=32)
     
     def __str__(self):
-        return u'%s %s' % (self.long_link, self.short_link)
+        return u'long: %s, short: %s' % (self.long_link, self.short_link)
